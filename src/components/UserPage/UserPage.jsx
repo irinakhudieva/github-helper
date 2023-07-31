@@ -3,9 +3,7 @@ import styles from './UserPage.module.css';
 import Header from '../SearchUser/SearchUser';
 import { userService } from '../../API/API';
 import { useParams } from 'react-router-dom';
-import { useFetching } from '../../hooks/useFetching';
 import User from './User';
-import Loader from '../UI/loader/Loader';
 import Repositories from './Repositories';
 
 const UserPage = () => {
@@ -14,28 +12,28 @@ const UserPage = () => {
     
     const [user, setUser] = useState({});
 
-    const [fetchUserPage, isLoading, error] = useFetching( async (username) => {
-        const response = await userService.getUserPage(username);
-        console.log(response)
-        setUser(response.data)
-    });
+    const getData = async () => {
+        try {
+            const response = await userService.getUserPage(username);
+            setUser(response.data);
+        } catch (error) {
+            console.log('error', error)
+        }
+   }
 
-    useEffect(() => {
-        fetchUserPage(params.username);
-    }, [])
+   useEffect(() => {
+       username &&
+       getData(username)
+   }, [getData, setUser, username])
 
     return (
         <div className={styles.userPage}>
-            <Header />
-            {isLoading 
-                ? <Loader />
-                : <div className={styles.page}>
-                    <User user={user} /> 
-                    <Repositories username={params} />
-                  </div>
-            }
-            {error && <div>ERROR</div>}
-        </div>
+           <Header />
+            <div className={styles.page}>
+                <User user={user} /> 
+                <Repositories username={username} />
+            </div>
+       </div>
     )
 }
 
