@@ -44,7 +44,6 @@ const Repositories = ({username}) => {
                 totalPages={repos.length}
                 changePage={changePage}
             />
-            <div>{errorRepos.message}</div>
         </div>
     )
 }
