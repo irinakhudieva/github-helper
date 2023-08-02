@@ -8,7 +8,7 @@ import Repositories from './Repositories';
 
 const UserPage = () => {
    
-    const params = useParams();
+    const {username} = useParams();
     
     const [user, setUser] = useState({});
 
