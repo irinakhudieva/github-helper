@@ -1,0 +1,15 @@
+.error {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+}
+
+.errorInfo {
+    text-align: center;
+    font-size: 28px;
+    color: #adadad;
+}

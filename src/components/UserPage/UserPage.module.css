@@ -1,0 +1,71 @@
+.userPage {
+    width: 100vw;
+    height: 100vh;
+    background-color: gainsboro;
+}
+
+.userInfo {
+    margin: 35px;
+    width: 30%;
+}
+
+.userPhoto {
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+}
+.name {
+    font-weight: bolder;
+    margin-top: 20px;
+    font-size: 1.4em;
+}
+
+.login {
+    color: #3b7be3;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.follow {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    opacity: 0.8;
+}
+
+.page {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.repositories {
+    margin: 30px 60px;
+    width: 70%;
+}
+
+.item {
+    width: 80%;
+    height: 60px;
+    color: #3b7be3;
+    font-weight: bold;
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin: 20px 0;
+    padding: 15px;
+
+}
+
+@media screen and (max-width: 750px) {
+    .page {
+        display: flex;
+        flex-flow: column;
+    }
+    .repositories {
+        margin: 30px;
+        width: 85%;
+    }
+    .item {
+        width: 90%;
+    }
+}

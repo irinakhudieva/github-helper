@@ -1,0 +1,14 @@
+.homePage {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: gainsboro;
+}
+
+.startInfo {
+    text-align: center;
+    font-size: 28px;
+    color: #adadad;
+}
