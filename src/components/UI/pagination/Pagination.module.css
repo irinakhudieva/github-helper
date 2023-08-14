@@ -1,0 +1,22 @@
+.page-wrapper {
+    cursor: pointer;
+    
+}
+
+.page {
+    margin-right: 7px;
+    background: transparent;
+    border: none;
+    font-size: 15px;
+}
+
+.active {
+    color:#1a7cc3;
+    margin-right: 5px;
+    font-weight: bold;
+    background: transparent;
+    border: 1px solid gray;
+    border-radius: 3px;
+    padding: 0 5px;
+    font-size: 15px;
+}

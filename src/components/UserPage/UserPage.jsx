@@ -1,40 +1,54 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styles from './UserPage.module.css';
-import Header from '../SearchUser/SearchUser';
-import { userService } from '../../API/API';
+import SearchUser from '../SearchUser/SearchUser';
+import { userService } from '../../service/serviceUser';
 import { useParams } from 'react-router-dom';
 import User from './User';
 import Repositories from './Repositories';
+import Error from '../Error/Error';
+import Loader from '../UI/loader/Loader';
 
 const UserPage = () => {
-   
-    const {username} = useParams();
-    
-    const [user, setUser] = useState({});
+   const {username} = useParams(); 
+   const [user, setUser] = useState({});
+   const [isLoading, setIsLoading] = useState(false);
+   const [error, setError] = useState('');
 
-    const getData = async () => {
-        try {
-            const response = await userService.getUserPage(username);
-            setUser(response.data);
-        } catch (error) {
-            console.log('error', error)
-        }
-   }
+   const getData = useCallback(
+        async () => {
+            try {
+                setIsLoading(true);
+                const response = await userService.getUserPage(username);
+                setUser(response.data);
+            } catch (error) {
+                setError(error);
+            } finally {
+                setIsLoading(false);
+            }
+        }, 
+        [setUser, username]
+    );
 
    useEffect(() => {
        username &&
        getData(username)
-   }, [getData, setUser, username])
+   }, [getData, setUser, username]);
 
-    return (
+   return (
         <div className={styles.userPage}>
-           <Header />
-            <div className={styles.page}>
-                <User user={user} /> 
-                <Repositories username={username} />
-            </div>
-       </div>
-    )
+            <SearchUser />
+            {error ? (
+                <Error />
+            ) : isLoading ? (
+                <Loader />
+                    ) : (
+                    <div className={styles.page}>
+                        <User user={user} />
+                        <Repositories username={username} />
+                    </div>
+            )}
+        </div>
+   )
 }
 
 export default UserPage;

@@ -1,13 +1,14 @@
-.homePage {
+.error {
     width: 100vw;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: gainsboro;
+    background-color: #ffffff;
 }
 
-.startInfo {
+.errorInfo {
     text-align: center;
     font-size: 28px;
     color: #adadad;

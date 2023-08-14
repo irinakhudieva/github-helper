@@ -6,6 +6,7 @@ import { faUserFriends, faUser } from '@fortawesome/free-solid-svg-icons';
 library.add(faUserFriends, faUser);
 
 const User = ({user}) => {
+   
     return (
         <div className={styles.userInfo}>
             <div>

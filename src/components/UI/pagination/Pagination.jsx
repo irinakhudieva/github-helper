@@ -1,22 +1,23 @@
 import React from 'react';
+import styles from './Pagination.module.css';
 
-const Pagination = ({totalPages, page, changePage}) => {
-    const pageNumbers = [];
+const Pagination = ({totalRepos, setCurrentPage, perPage, currentPage}) => {
+    let pageNumbers = [];
 
-    for(let i = 1; 1 <= Math.ceil(totalPages / page); i++) {
-        pageNumbers.push(i)
+    for(let i = 1; i <= Math.ceil(totalRepos/perPage); i++) {
+        pageNumbers.push(i);
     }
 
     return (
         <div className="page-wrapper">
             {pageNumbers.map(p =>
-                <span
-                    onClick={() => changePage(p)} 
+                <button
+                    onClick={() => setCurrentPage(p)} 
                     key={p}
-                    className={page === p ? 'page page-current' : 'page'}
+                    className={p === currentPage ? styles.active : styles.page}
                 >
                     {p}
-                </span>
+                </button>
             )}
         </div>
     )
