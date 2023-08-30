@@ -3,6 +3,7 @@ import styles from './Error.module.css';
 import errorImg from '../../common/images/404-error.gif';
 
 const Error = () => {
+
     return (
         <div className={styles.error}>
             <img src={errorImg} alt="" />

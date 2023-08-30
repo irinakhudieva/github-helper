@@ -11,7 +11,7 @@ function App() {
           <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/user/:username" element={<UserPage />} />
-              <Route path="*" element={<Error />} />      
+              <Route path="/error" element={<Error />} />      
           </Routes>
       </BrowserRouter>
   );

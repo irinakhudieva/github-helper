@@ -17,14 +17,14 @@ const UserPage = () => {
    const getData = useCallback(
         async () => {
             try {
+                setError(false);
                 setIsLoading(true);
                 const response = await userService.getUserPage(username);
                 setUser(response.data);
+                setIsLoading(false);
             } catch (error) {
                 setError(error);
-            } finally {
-                setIsLoading(false);
-            }
+            } 
         }, 
         [setUser, username]
     );
